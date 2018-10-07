@@ -20,7 +20,7 @@ public class City {
    * @throws IncorrectFormatCityException
    */
   public City withCityName(String cityName) throws IncorrectFormatCityException {
-    if (StringUtils.isEmpty(cityName) || cityName.length() != 3) {
+    if (StringUtils.isEmpty(cityName) || !cityName.matches("[A-Z]{3}")) {
       throw new IncorrectFormatCityException(cityName);
     }
     this.cityName = cityName;

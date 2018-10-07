@@ -1,35 +1,36 @@
 package com.jribes.cityconnectionsservice.response;
 
-import java.sql.Date;
-import java.util.ArrayList;
-import java.util.List;
-import com.jribes.cityconnectionsservice.entities.CityConnection;
+import java.io.Serializable;
+import io.swagger.annotations.ApiModel;
+import io.swagger.annotations.ApiModelProperty;
 
-public class CityConnectionResponse {
+@SuppressWarnings("serial")
+@ApiModel
+public class CityConnectionResponse implements Serializable {
 
+  @ApiModelProperty(value = "id of the connection flight", example = "0", required = true)
   private Long id;
+  @ApiModelProperty(value = "Name of the origin city", example = "BCN", required = true)
   private String originCity;
+  @ApiModelProperty(value = "Name of the destination city", example = "MAD", required = true)
   private String destinationCity;
-  private Date departureTime;
-  private Date arrivalTime;
+  @ApiModelProperty(value = "Departure time from the origin city", example = "1540535400000",
+      required = true)
+  private Long departureTime;
+  @ApiModelProperty(value = "Arrival time to destination city", example = "1540540800000",
+      required = true)
+  private Long arrivalTime;
 
-  public static List<CityConnectionResponse> createResponseBy(
-      List<CityConnection> cityConnectionList) {
+  public Long getId() {
+    return id;
+  }
 
-    List<CityConnectionResponse> cityConnectionResponseList = new ArrayList<>();
+  public String getOriginCity() {
+    return originCity;
+  }
 
-    for (CityConnection cityConnection : cityConnectionList) {
-      CityConnectionResponse cityConnectionResponse = new CityConnectionResponse();
-      cityConnectionResponse.setId(cityConnection.getId());
-      cityConnectionResponse.setOriginCity(cityConnection.getOriginCity());
-      cityConnectionResponse.setDestinationCity(cityConnection.getDestinationCity());
-      cityConnectionResponse.setDepartureTime(cityConnection.getDepartureTime());
-      cityConnectionResponse.setArrivalTime(cityConnection.getArrivalTime());
-      cityConnectionResponseList.add(cityConnectionResponse);
-    }
-
-    return cityConnectionResponseList;
-
+  public String getDestinationCity() {
+    return destinationCity;
   }
 
   public void setId(Long id) {
@@ -44,12 +45,19 @@ public class CityConnectionResponse {
     this.destinationCity = destinationCity;
   }
 
+  public Long getDepartureTime() {
+    return departureTime;
+  }
 
-  public void setDepartureTime(Date departureTime) {
+  public void setDepartureTime(Long departureTime) {
     this.departureTime = departureTime;
   }
 
-  public void setArrivalTime(Date arrivalTime) {
+  public Long getArrivalTime() {
+    return arrivalTime;
+  }
+
+  public void setArrivalTime(Long arrivalTime) {
     this.arrivalTime = arrivalTime;
   }
 

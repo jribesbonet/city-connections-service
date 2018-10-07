@@ -1,17 +1,17 @@
 package com.jribes.cityconnectionsservice.service.impl;
 
 import java.util.List;
-import javax.inject.Inject;
-import javax.inject.Named;
 import com.jribes.cityconnectionsservice.domain.City;
 import com.jribes.cityconnectionsservice.entities.CityConnection;
 import com.jribes.cityconnectionsservice.repositories.CityConnectionRepository;
 import com.jribes.cityconnectionsservice.service.CityConnectionsService;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
 
-@Named
+@Service
 public class CityConnectionsServiceImpl implements CityConnectionsService {
 
-  @Inject
+  @Autowired
   CityConnectionRepository repository;
 
   @Override
