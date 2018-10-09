@@ -3,7 +3,7 @@ package com.jribes.cityconnectionsservice.response;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
-import com.jribes.cityconnectionsservice.entities.CityConnection;
+import com.jribes.cityconnectionsservice.model.CityConnection;
 import org.springframework.http.HttpStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;

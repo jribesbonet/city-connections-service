@@ -1,6 +1,7 @@
 package com.jribes.cityconnectionsservice.exception;
 
 import com.jribes.cityconnectionsservice.response.CityConnectionServiceResponse;
+import com.jribes.itinerarlib.exception.IncorrectFormatCityException;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ControllerAdvice;

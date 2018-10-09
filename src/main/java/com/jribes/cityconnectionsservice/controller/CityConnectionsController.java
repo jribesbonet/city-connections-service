@@ -1,11 +1,11 @@
 package com.jribes.cityconnectionsservice.controller;
 
 import java.util.List;
-import com.jribes.cityconnectionsservice.domain.City;
-import com.jribes.cityconnectionsservice.entities.CityConnection;
-import com.jribes.cityconnectionsservice.exception.IncorrectFormatCityException;
+import com.jribes.cityconnectionsservice.model.CityConnection;
 import com.jribes.cityconnectionsservice.response.CityConnectionServiceResponse;
 import com.jribes.cityconnectionsservice.service.CityConnectionsService;
+import com.jribes.itinerarlib.domain.City;
+import com.jribes.itinerarlib.exception.IncorrectFormatCityException;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -26,7 +26,7 @@ public class CityConnectionsController {
   @Autowired
   CityConnectionsService cityConnectionService;
 
-  @GetMapping("/{originCityName}")
+  @GetMapping("/origin/{originCityName}")
   @ApiOperation(value = "Get all connection from an origin city")
   public ResponseEntity<CityConnectionServiceResponse> getAllConnectionsByOriginCity(
       @PathVariable String originCityName) throws IncorrectFormatCityException {
@@ -37,6 +37,23 @@ public class CityConnectionsController {
 
     List<CityConnection> cityConnectionsList =
         cityConnectionService.getConnectionsByOriginCity(originCity);
+
+    return new ResponseEntity<CityConnectionServiceResponse>(
+        CityConnectionServiceResponse.createCityConnectionServiceResponseOk(cityConnectionsList),
+        HttpStatus.OK);
+  }
+
+  @GetMapping("/destination/{destinationCityName}")
+  @ApiOperation(value = "Get all connection from a destination city")
+  public ResponseEntity<CityConnectionServiceResponse> getAllConnectionsByDestinationCity(
+      @PathVariable String destinationCityName) throws IncorrectFormatCityException {
+
+    logger.info("getAllConnectionsByOriginCity method called");
+
+    City originCity = City.createCity().withCityName(destinationCityName);
+
+    List<CityConnection> cityConnectionsList =
+        cityConnectionService.getConnectionsByDestinationCity(originCity);
 
     return new ResponseEntity<CityConnectionServiceResponse>(
         CityConnectionServiceResponse.createCityConnectionServiceResponseOk(cityConnectionsList),

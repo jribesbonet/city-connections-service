@@ -1,10 +1,10 @@
 package com.jribes.cityconnectionsservice.service.impl;
 
 import java.util.List;
-import com.jribes.cityconnectionsservice.domain.City;
-import com.jribes.cityconnectionsservice.entities.CityConnection;
+import com.jribes.cityconnectionsservice.model.CityConnection;
 import com.jribes.cityconnectionsservice.repositories.CityConnectionRepository;
 import com.jribes.cityconnectionsservice.service.CityConnectionsService;
+import com.jribes.itinerarlib.domain.City;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,6 +17,11 @@ public class CityConnectionsServiceImpl implements CityConnectionsService {
   @Override
   public List<CityConnection> getConnectionsByOriginCity(City originCity) {
     return repository.findByOriginCity(originCity.getCityName());
+  }
+
+  @Override
+  public List<CityConnection> getConnectionsByDestinationCity(City destinationCity) {
+    return repository.findByDestinationCity(destinationCity.getCityName());
   }
 
 }

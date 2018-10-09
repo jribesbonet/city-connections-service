@@ -84,6 +84,13 @@
 			<version>3.0</version>
 		</dependency>
 
+		<!-- Common functionalities lib -->
+		<dependency>
+			<groupId>com.jribes</groupId>
+			<artifactId>itinerary-lib</artifactId>
+			<version>1.0</version>
+		</dependency>
+
 	</dependencies>
 
 	<dependencyManagement>

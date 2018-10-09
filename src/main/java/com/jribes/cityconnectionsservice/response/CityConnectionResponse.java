@@ -8,7 +8,7 @@ import io.swagger.annotations.ApiModelProperty;
 @ApiModel
 public class CityConnectionResponse implements Serializable {
 
-  @ApiModelProperty(value = "id of the connection flight", example = "0", required = true)
+  @ApiModelProperty(value = "id of the connection flight", example = "1", required = true)
   private Long id;
   @ApiModelProperty(value = "Name of the origin city", example = "BCN", required = true)
   private String originCity;

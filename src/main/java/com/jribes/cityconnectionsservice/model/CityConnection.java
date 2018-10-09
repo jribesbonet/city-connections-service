@@ -1,4 +1,4 @@
-package com.jribes.cityconnectionsservice.entities;
+package com.jribes.cityconnectionsservice.model;
 
 import java.sql.Date;
 import javax.persistence.Entity;
