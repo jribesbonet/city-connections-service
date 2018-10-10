@@ -4,6 +4,8 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 import com.jribes.cityconnectionsservice.model.CityConnection;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import io.swagger.annotations.ApiModel;
 import io.swagger.annotations.ApiModelProperty;
@@ -11,6 +13,8 @@ import io.swagger.annotations.ApiModelProperty;
 @SuppressWarnings("serial")
 @ApiModel
 public class CityConnectionServiceResponse implements Serializable {
+
+  private static Logger logger = LoggerFactory.getLogger(CityConnectionServiceResponse.class);
 
   private static final String OK_DESCRIPTION = "City connections correctly returned";
   private static final String INTERNAL_SERVER_ERROR_DESCRIPTION =
@@ -36,6 +40,9 @@ public class CityConnectionServiceResponse implements Serializable {
     List<CityConnectionResponse> cityConnectionResponseListBuilder = new ArrayList<>();
 
     for (CityConnection cityConnection : cityConnectionList) {
+
+      logger.info("cityConnection --> {}", cityConnection);
+
       CityConnectionResponse cityConnectionResponse = new CityConnectionResponse();
       cityConnectionResponse.setId(cityConnection.getId());
       cityConnectionResponse.setOriginCity(cityConnection.getOriginCity());

@@ -1,10 +1,11 @@
 package com.jribes.cityconnectionsservice.model;
 
-import java.sql.Date;
+import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Temporal;
 
 @Entity
 public class CityConnection {
@@ -14,7 +15,9 @@ public class CityConnection {
   private Long id;
   private String originCity;
   private String destinationCity;
+  @Temporal(javax.persistence.TemporalType.TIMESTAMP)
   private Date departureTime;
+  @Temporal(javax.persistence.TemporalType.TIMESTAMP)
   private Date arrivalTime;
 
   public Long getId() {
